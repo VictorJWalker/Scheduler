@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="680.0" prefWidth="1252.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AppointmentsController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="672.0" prefWidth="1252.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d1d2d3" height="35.0" layoutX="48.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="1158.0" />
+            <Label layoutX="548.0" layoutY="60.0" text="Appointments">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="addAppt" layoutX="201.0" layoutY="571.0" mnemonicParsing="false" onAction="#addAppt" prefHeight="25.0" prefWidth="139.0" text="Add appointment" />
+            <Button fx:id="updateAppt" layoutX="481.0" layoutY="572.0" mnemonicParsing="false" onAction="#updateAppt" text="Update appointment" />
+            <Button fx:id="deleteAppt" layoutX="788.0" layoutY="574.0" mnemonicParsing="false" onAction="#delPrompt" prefHeight="25.0" prefWidth="139.0" text="Delete appointment" />
+            <TableView fx:id="apptTable" layoutX="48.0" layoutY="94.0" prefHeight="465.0" prefWidth="1158.0">
+              <columns>
+                  <TableColumn fx:id="apptID" prefWidth="61.0" text="Appt ID" />
+                  <TableColumn fx:id="start" prefWidth="130.0" text="Start Date" />
+                <TableColumn fx:id="end" prefWidth="130.0" text="End Date" />
+                <TableColumn fx:id="title" prefWidth="109.0" text="Title" />
+                  <TableColumn fx:id="desc" prefWidth="271.0" text="Description" />
+                  <TableColumn fx:id="loc" prefWidth="119.0" text="Location" />
+                  <TableColumn fx:id="type" prefWidth="114.0" text="Type" />
+                  <TableColumn fx:id="contactID" prefWidth="73.0" text="Contact ID" />
+                  <TableColumn fx:id="customerID" prefWidth="85.0" text="Customer ID" />
+                  <TableColumn fx:id="userID" prefWidth="64.0" text="User ID" />
+              </columns>
+            </TableView>
+            <Label layoutX="49.0" layoutY="568.0" text="View by:" />
+            <RadioButton fx:id="allView" layoutX="107.0" layoutY="568.0" mnemonicParsing="false" onAction="#setAllView" onMouseClicked="#setAllView" selected="true" text="All" />
+            <RadioButton fx:id="monthView" layoutX="107.0" layoutY="585.0" mnemonicParsing="false" onAction="#setMonthView" onMouseClicked="#setMonthView" text="Month" />
+            <Button fx:id="backToMenu" layoutX="1088.0" layoutY="574.0" mnemonicParsing="false" onAction="#backToMenu" text="Back to main menu" />
+            <RadioButton fx:id="weekView" layoutX="107.0" layoutY="602.0" mnemonicParsing="false" onAction="#setWeekView" onMouseClicked="#setWeekView" text="Week" />
+            <Label fx:id="notiLabel" layoutX="197.0" layoutY="602.0" text="Notification" visible="false" />
+            <Label fx:id="delConfirm" layoutX="701.0" layoutY="609.0" text="Are you sure you want to delete this appointment?" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="delYes" layoutX="927.0" layoutY="629.0" mnemonicParsing="false" onAction="#deleteAppt" text="Yes" visible="false" />
+            <Button fx:id="delNo" layoutX="982.0" layoutY="629.0" mnemonicParsing="false" onAction="#clearNotis" text="No" visible="false" />
+            <Label fx:id="updateNoti" layoutX="481.0" layoutY="602.0" text="Update noti" visible="false" />
+            <Button fx:id="toggleView" layoutX="55.0" layoutY="65.0" mnemonicParsing="false" onAction="#toggleView" text="View appointment totals" />
+            <TableView fx:id="totalTable" layoutX="47.0" layoutY="94.0" prefHeight="465.0" prefWidth="1158.0" visible="false">
+               <columns>
+                  <TableColumn fx:id="totalCategory" prefWidth="208.0" text="Type" />
+                  <TableColumn fx:id="totalAmount" prefWidth="207.0" text="Number" />
+               </columns>
+            </TableView>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
